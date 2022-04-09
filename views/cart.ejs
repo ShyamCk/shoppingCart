@@ -1,0 +1,51 @@
+<%- include('./layout/header'); -%>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3 class="h3">shopping Demo-1 </h3>
+        </div>
+        <div class="col-sm-6">
+            <a class="pull-right" href="/cart">Goto cart</a>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-border">
+            <tr>
+                <td>#</td>
+                <td>Product Name</td>
+                <td>Quantity</td>
+                <td>Date</td>
+            </tr>
+
+        <%  for (let item of cart){ %>
+            <tr>
+                <td><%= item.product_id %></td>
+                <td><%= item.name %></td>
+                <td><%= item.quantity %></td>
+                <td><%= item.createdAt %></td>
+            </tr>
+        <% } %>
+        </table>
+        
+
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        var email,pass;
+        $(".add_product").on('click', function(){
+            product =$(this).attr('data-id');
+            
+            $.post("/addToCart",{product:product},function(data){
+                alert(data.message);
+            });
+        });
+    });
+
+</script>
+
+
+<%- include('./layout/footer'); -%>
