@@ -1,3 +1,1 @@
-<?php 
-	phpinfo(); 
-?>
+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
